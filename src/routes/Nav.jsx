@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { SearchContext } from "../contexts/SearchContext";
+import Categories from "../components/Categories";
 
 const Nav = () => {
   const { searchField, setSearchField } = useContext(SearchContext);
@@ -18,6 +19,7 @@ const Nav = () => {
           onChange={changeHandler}
         />
       </div>
+      <Categories />
       <Outlet />
     </>
   );

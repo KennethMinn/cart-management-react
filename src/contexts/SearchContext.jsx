@@ -1,4 +1,5 @@
 import { createContext, useReducer, useState } from "react";
+import { createAction } from "../utils/helper-func";
 
 export const SearchContext = createContext();
 
@@ -25,11 +26,10 @@ const searchReducer = (state, action) => {
 };
 
 export const SearchProvider = ({ children }) => {
-  // const [searchField, setSearchField] = useState("");
   const [{ searchField }, dispatch] = useReducer(searchReducer, INITIAL_STATE);
 
   const setSearchField = (value) => {
-    dispatch({ type: SEARCH_ACTION_TYPES.SET_SEARCH_FIELD, payload: value });
+    dispatch(createAction(SEARCH_ACTION_TYPES.SET_SEARCH_FIELD, value));
   };
 
   const value = { searchField, setSearchField };

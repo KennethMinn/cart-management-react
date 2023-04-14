@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply px-5 py-2 rounded-lg cursor-pointer;
+  transition: 0.1s;
+}
+
+.cat-btn {
+  @apply px-3 py-1 rounded-lg cursor-pointer border-2 border-blue-400 ;
+  transition: 0.1s;
+}
+
+.cat-btn:hover {
+  transform: scale(1.1);
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}

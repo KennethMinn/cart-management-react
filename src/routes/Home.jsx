@@ -1,11 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import { SearchContext } from "../contexts/SearchContext";
+import { CategoriesContext } from "../contexts/categories-context";
+import { ProductsContext } from "../contexts/products-context";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const { products, setProducts } = useContext(ProductsContext);
+  const { filteredProducts, setFilteredProducts } = useContext(ProductsContext);
   const { searchField } = useContext(SearchContext);
+  const { categories, setCategories } = useContext(CategoriesContext);
 
   useEffect(() => {
     getProducts();
@@ -23,10 +26,14 @@ const Home = () => {
     const data = await res.json();
     setProducts(data);
     console.log(data);
+    const uniqueCategories = [
+      ...new Set(data.map((product) => product.category)),
+    ];
+    setCategories(uniqueCategories);
   };
 
   return (
-    <div className=" grid grid-cols-3 gap-44 gap-y-10 ">
+    <div className=" grid justify-items-center grid-cols-3 gap-44 gap-y-10 ">
       {filteredProducts.map((product) => (
         <Cards key={product.id} product={product} id={product.id} />
       ))}
