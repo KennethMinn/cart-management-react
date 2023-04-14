@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <div className=" grid justify-items-center grid-cols-3 gap-44 gap-y-10 ">
-      {filteredProducts.map((product) => (
+      {filteredProducts?.map((product) => (
         <Cards key={product.id} product={product} id={product.id} />
       ))}
     </div>

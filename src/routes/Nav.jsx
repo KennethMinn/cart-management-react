@@ -5,6 +5,7 @@ import Categories from "../components/Categories";
 
 const Nav = () => {
   const { searchField, setSearchField } = useContext(SearchContext);
+
   const changeHandler = (e) => {
     const value = e.target.value.toLowerCase();
     setSearchField(value);
