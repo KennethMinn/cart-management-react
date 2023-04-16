@@ -30,6 +30,7 @@ export const CategoriesProvider = ({ children }) => {
     categoriesReducer,
     INITIAL_STATE
   );
+  
   const setCategories = (newCategories) => {
     dispatch(
       createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES, newCategories)

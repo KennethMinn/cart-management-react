@@ -18,4 +18,5 @@
 
 .btn:hover {
   transform: scale(1.1);
+  background: rgb(42, 120, 215);
 }

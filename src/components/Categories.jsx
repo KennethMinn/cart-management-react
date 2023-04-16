@@ -3,16 +3,16 @@ import { CategoriesContext } from "../contexts/categories-context";
 import { ProductsContext } from "../contexts/products-context";
 
 const Categories = () => {
-  const { filteredProducts, setFilteredProducts, products, setProducts } =
-    useContext(ProductsContext);
+  const { setFilteredProducts, products } = useContext(ProductsContext);
   const { categories, setCategories } = useContext(CategoriesContext);
 
-  const test = (e) => {
+  const renderCategories = (e) => {
     const catItems = products.filter(
       (product) => product.category === e.target.textContent
     );
     console.log(catItems);
     setFilteredProducts(catItems);
+    e.target.classList.add("active");
   };
 
   return (
@@ -25,7 +25,7 @@ const Categories = () => {
           All
         </button>
         {categories.map((cat, i) => (
-          <button key={i} className=" cat-btn" onClick={test}>
+          <button key={i} className=" cat-btn" onClick={renderCategories}>
             {cat}
           </button>
         ))}

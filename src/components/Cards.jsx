@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { excerpt } from "../utils/helper-func";
+import { ProductsContext } from "../contexts/products-context";
 //*********** console.log([...Array(5)].map((_, i) => console.log(i+1)));  **************
 
 const Cards = ({ product, id }) => {
   const nav = useNavigate();
+
+  const { cartItems, setCartItems } = useContext(ProductsContext);
 
   return (
     <>
@@ -27,7 +30,10 @@ const Cards = ({ product, id }) => {
             </div>
           </div>
           <div className=" flex justify-between mt-5 mb-5">
-            <button className="btn border-blue-500 border-2">
+            <button
+              className="btn border-blue-500 border-2"
+              onClick={() => setCartItems(product)}
+            >
               AddToCart
             </button>
             <button
