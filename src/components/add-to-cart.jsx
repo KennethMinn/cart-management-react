@@ -41,7 +41,7 @@ const AddToCart = () => {
         </>
       ) : (
         <>
-          <div className=" flex flex-col items-center gap-5 mt-10 shadow-sm border-b-2">
+          <div className=" flex flex-col items-center gap-5 mt-10">
             {cartItems?.map((item) => (
               <CartItems
                 item={item}
@@ -51,7 +51,7 @@ const AddToCart = () => {
               />
             ))}
           </div>
-          <div className=" flex justify-between font-bold text-xl mx-64 mt-6">
+          <div className=" flex justify-between font-bold text-xl mx-72 mt-6 mb-8">
             <h1>total:</h1>
             <h1>${mainTotal.toFixed(2)}</h1>
           </div>

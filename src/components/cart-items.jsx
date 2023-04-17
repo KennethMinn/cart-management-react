@@ -5,7 +5,8 @@ import { FaTrashAlt } from "react-icons/fa";
 import { ProductsContext } from "../contexts/products-context";
 
 const CartItems = ({ item, calcTotalIncrement, calcTotalDecrement }) => {
-  const { removeItemFromCart } = useContext(ProductsContext);
+  const { removeItemFromCart} = useContext(ProductsContext);
+    
 
   let { id, image, title, price } = item;
 
@@ -32,13 +33,13 @@ const CartItems = ({ item, calcTotalIncrement, calcTotalDecrement }) => {
 
   return (
     <>
-      <div className=" flex items-center gap-20 mb-10" key={id}>
+      <div className=" flex items-center gap-20 pb-6 border-b-2" key={id}>
         <div className="">
           <img src={image} className=" w-[85px]" />
         </div>
         <div className=" w-[500px]">
-          <h1 className=" font-bold text-xl">{excerpt(title, 70)}</h1>
-          <h3 className=" font-bold text-xl">${oneItemPrice.toFixed(2)}</h3>
+          <h1 className=" font-bold text-xl truncate">{title}</h1>
+          <h3 className=" font-bold text-lg">${oneItemPrice.toFixed(2)}</h3>
           <div className=" flex items-center gap-6 text-lg mt-3 ">
             <BsArrowLeftSquareFill
               className=" text-cyan-500 cursor-pointer"

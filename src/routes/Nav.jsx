@@ -34,7 +34,7 @@ const Nav = () => {
             onChange={changeHandler}
           />
           <div>
-            <BsCart4 className=" text-5xl relative" onClick={clickHandler} />
+            <BsCart4 className=" text-5xl relative cursor-pointer" onClick={clickHandler} />
             <span
               className=" font-bold absolute top-0 end-[105px] rounded-full bg-cyan-400 w-[25px] h-[25px] text-center"
               style={{ lineHeight: "25px" }}
