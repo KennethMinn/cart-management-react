@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./routes/Nav";
 import Home from "./routes/Home";
 import Details from "./routes/Details";
-import CartItems from "./components/cart-items";
+import AddToCart from "./components/add-to-cart";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <Route path="/" element={<Nav />}>
           <Route index element={<Home />} />
           <Route path="details/:id" element={<Details />} />
-          <Route path="items" element={<CartItems />} />
+          <Route path="items" element={<AddToCart />} />
         </Route>
       </Routes>
     </>

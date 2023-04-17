@@ -30,9 +30,18 @@ const productsReducer = (state, action) => {
         filteredProducts: payload,
       };
     case PRODUCTS_ACTION_TYPES.SET_CART_ITEMS:
+      const isExisted = state.cartItems.find((item) => item.id === payload.id);
+      if (isExisted) return state;
+
       return {
         ...state,
-        cartItems: [...state.cartItems, payload],
+        cartItems: [...state.cartItems, { ...payload, quantity: 1 }],
+      };
+
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((item) => item.id !== payload.id),
       };
 
     default:
@@ -66,6 +75,10 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
+  const removeItemFromCart = (item) => {
+    dispatch(createAction("REMOVE_FROM_CART", item));
+  };
+
   const value = {
     products,
     setProducts,
@@ -73,6 +86,7 @@ export const ProductsProvider = ({ children }) => {
     setFilteredProducts,
     cartItems,
     setCartItems,
+    removeItemFromCart,
   };
 
   return (

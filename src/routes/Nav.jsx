@@ -8,6 +8,7 @@ import { ProductsContext } from "../contexts/products-context";
 const Nav = () => {
   const { searchField, setSearchField } = useContext(SearchContext);
   const { cartItems, setCartItems } = useContext(ProductsContext);
+  console.log(cartItems)
 
   const changeHandler = (e) => {
     const value = e.target.value.toLowerCase();
