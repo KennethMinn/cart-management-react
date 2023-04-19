@@ -1,18 +1,20 @@
 import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { SearchContext } from "../contexts/SearchContext";
 import Categories from "../components/Categories";
 import { BsCart4 } from "react-icons/bs";
 import { ProductsContext } from "../contexts/products-context";
+import { selectSearchField } from "../store/search/search-selector";
+import { setSearchField } from "../store/search/search-actions";
 
 const Nav = () => {
-  const { searchField, setSearchField } = useContext(SearchContext);
   const { cartItems, setCartItems } = useContext(ProductsContext);
-  console.log(cartItems)
+  console.log(cartItems);
+  const dispatch = useDispatch();
 
   const changeHandler = (e) => {
     const value = e.target.value.toLowerCase();
-    setSearchField(value);
+    dispatch(setSearchField(value));
   };
 
   const nav = useNavigate();
@@ -34,7 +36,10 @@ const Nav = () => {
             onChange={changeHandler}
           />
           <div>
-            <BsCart4 className=" text-5xl relative cursor-pointer" onClick={clickHandler} />
+            <BsCart4
+              className=" text-5xl relative cursor-pointer"
+              onClick={clickHandler}
+            />
             <span
               className=" font-bold absolute top-0 end-[105px] rounded-full bg-cyan-400 w-[25px] h-[25px] text-center"
               style={{ lineHeight: "25px" }}

@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
-import { SearchContext } from "../contexts/SearchContext";
 import { CategoriesContext } from "../contexts/categories-context";
 import { ProductsContext } from "../contexts/products-context";
+import { selectSearchField } from "../store/search/search-selector";
 
 const Home = () => {
   const { products, setProducts } = useContext(ProductsContext);
   const { filteredProducts, setFilteredProducts } = useContext(ProductsContext);
-  const { searchField } = useContext(SearchContext);
+  const searchField = useSelector(selectSearchField);
   const { categories, setCategories } = useContext(CategoriesContext);
 
   useEffect(() => {
