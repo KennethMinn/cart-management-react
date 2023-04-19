@@ -24,13 +24,14 @@ const Nav = () => {
   return (
     <>
       <div className=" flex justify-between items-center">
-        <h1 className=" text-4xl font-bold" onClick={() => nav("/")}>
+        <h1 className=" text-4xl font-bold cursor-pointer" onClick={() => nav("/")}>
           Logo
         </h1>
         <div className=" flex items-center gap-10">
           <input
             type="search"
-            className=" border-2 outline-0"
+            placeholder="search"
+            className=" border-2 outline-0 px-2 py-1 rounded-md"
             onChange={changeHandler}
           />
           <div>

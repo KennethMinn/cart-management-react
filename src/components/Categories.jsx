@@ -1,19 +1,18 @@
-import React, { useContext } from "react";
-import { CategoriesContext } from "../contexts/categories-context";
+import React from "react";
 import { setFilteredProducts } from "../store/products/product-action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProducts } from "../store/products/product-selector";
+import { selectCategories } from "../store/categories/category-selector";
 
 const Categories = () => {
   const products = useSelector(selectProducts);
-  const { categories } = useContext(CategoriesContext);
+  const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
 
   const renderCategories = (e) => {
     const catItems = products.filter(
       (product) => product.category === e.target.textContent
     );
-    console.log(catItems);
     dispatch(setFilteredProducts(catItems));
     e.target.classList.add("active");
   };

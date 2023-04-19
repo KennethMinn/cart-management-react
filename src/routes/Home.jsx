@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "../components/Cards";
-import { CategoriesContext } from "../contexts/categories-context";
 import { selectSearchField } from "../store/search/search-selector";
 import {
   setProducts,
@@ -11,6 +10,7 @@ import {
   selectProducts,
   selectFilteredProducts,
 } from "../store/products/product-selector";
+import { setCategories } from "../store/categories/category-action";
 
 const Home = () => {
   const products = useSelector(selectProducts);
@@ -18,8 +18,6 @@ const Home = () => {
   const filteredProducts = useSelector(selectFilteredProducts);
 
   const searchField = useSelector(selectSearchField);
-
-  const { setCategories } = useContext(CategoriesContext);
 
   const dispatch = useDispatch();
 
@@ -41,7 +39,7 @@ const Home = () => {
     const uniqueCategories = [
       ...new Set(data.map((product) => product.category)),
     ];
-    setCategories(uniqueCategories);
+    dispatch(setCategories(uniqueCategories));
   };
 
   return (
