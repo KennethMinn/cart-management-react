@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { excerpt } from "../utils/helper-func";
 import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
-import { ProductsContext } from "../contexts/products-context";
+import { removeItemFromCart } from "../store/products/product-action";
+import { useDispatch } from "react-redux";
 
 const CartItems = ({ item, calcTotalIncrement, calcTotalDecrement }) => {
-  const { removeItemFromCart} = useContext(ProductsContext);
-    
+  const dispatch = useDispatch();
 
   let { id, image, title, price } = item;
 
@@ -27,7 +27,7 @@ const CartItems = ({ item, calcTotalIncrement, calcTotalDecrement }) => {
   const oneItemPrice = price * count;
 
   const delBtn = () => {
-    removeItemFromCart(item);
+    dispatch(removeItemFromCart(item));
     calcTotalDecrement(oneItemPrice);
   };
 
@@ -39,7 +39,7 @@ const CartItems = ({ item, calcTotalIncrement, calcTotalDecrement }) => {
         </div>
         <div className=" w-[500px]">
           <h1 className=" font-bold text-xl truncate">{title}</h1>
-          <h3 className=" font-bold text-lg">${oneItemPrice.toFixed(2)}</h3>
+          <h3 className=" font-bold text-lg">${price.toFixed(2)}</h3>
           <div className=" flex items-center gap-6 text-lg mt-3 ">
             <BsArrowLeftSquareFill
               className=" text-cyan-500 cursor-pointer"

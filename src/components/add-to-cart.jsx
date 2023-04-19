@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ProductsContext } from "../contexts/products-context";
-
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartItems from "./cart-items";
+import { selectCartItems } from "../store/products/product-selector";
 
 const AddToCart = () => {
-  const { cartItems } = useContext(ProductsContext);
+  const cartItems = useSelector(selectCartItems);
   const total = cartItems?.reduce((pv, cv) => pv + cv.price, 0);
   const [mainTotal, setMainTotal] = useState(total);
 

@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import Categories from "../components/Categories";
 import { BsCart4 } from "react-icons/bs";
-import { ProductsContext } from "../contexts/products-context";
-import { selectSearchField } from "../store/search/search-selector";
 import { setSearchField } from "../store/search/search-actions";
+import { selectCartItems } from "../store/products/product-selector";
 
 const Nav = () => {
-  const { cartItems, setCartItems } = useContext(ProductsContext);
-  console.log(cartItems);
+  const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
 
   const changeHandler = (e) => {

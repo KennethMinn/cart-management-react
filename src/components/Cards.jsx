@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { excerpt } from "../utils/helper-func";
-import { ProductsContext } from "../contexts/products-context";
+import { useDispatch } from "react-redux";
+import { setCartItems } from "../store/products/product-action";
 //*********** console.log([...Array(5)].map((_, i) => console.log(i+1)));  **************
 
 const Cards = ({ product, id }) => {
   const nav = useNavigate();
-
-  const { cartItems, setCartItems } = useContext(ProductsContext);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -32,7 +32,7 @@ const Cards = ({ product, id }) => {
           <div className=" flex justify-between mt-5 mb-5">
             <button
               className="btn border-blue-500 border-2"
-              onClick={() => setCartItems(product)}
+              onClick={() => dispatch(setCartItems(product))}
             >
               AddToCart
             </button>

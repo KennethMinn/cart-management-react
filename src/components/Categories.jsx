@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
 import { CategoriesContext } from "../contexts/categories-context";
-import { ProductsContext } from "../contexts/products-context";
+import { setFilteredProducts } from "../store/products/product-action";
+import { useDispatch, useSelector } from "react-redux";
+import { selectProducts } from "../store/products/product-selector";
 
 const Categories = () => {
-  const { setFilteredProducts, products } = useContext(ProductsContext);
-  const { categories, setCategories } = useContext(CategoriesContext);
+  const products = useSelector(selectProducts);
+  const { categories } = useContext(CategoriesContext);
+  const dispatch = useDispatch();
 
   const renderCategories = (e) => {
     const catItems = products.filter(
       (product) => product.category === e.target.textContent
     );
     console.log(catItems);
-    setFilteredProducts(catItems);
+    dispatch(setFilteredProducts(catItems));
     e.target.classList.add("active");
   };
 
@@ -20,7 +23,7 @@ const Categories = () => {
       <div className=" flex gap-4 mt-4">
         <button
           className="cat-btn"
-          onClick={() => setFilteredProducts(products)}
+          onClick={() => dispatch(setFilteredProducts(products))}
         >
           All
         </button>
