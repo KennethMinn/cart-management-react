@@ -1,5 +1,5 @@
-import { createContext, useReducer } from "react";
-import { createAction } from "../utils/helper-func";
+import { createContext, useReducer } from 'react';
+import { createAction } from '../utils/helper-func';
 
 export const CategoriesContext = createContext();
 
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 };
 
 const CATEGORIES_ACTION_TYPES = {
-  SET_CATEGORIES: "SET_CATEGORIES",
+  SET_CATEGORIES: 'SET_CATEGORIES',
 };
 
 const categoriesReducer = (state, action) => {
@@ -30,8 +30,8 @@ export const CategoriesProvider = ({ children }) => {
     categoriesReducer,
     INITIAL_STATE
   );
-  
-  const setCategories = (newCategories) => {
+
+  const setCategories = newCategories => {
     dispatch(
       createAction(CATEGORIES_ACTION_TYPES.SET_CATEGORIES, newCategories)
     );

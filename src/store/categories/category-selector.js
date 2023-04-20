@@ -1,8 +1,8 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
-const selectCategoriesReducer = (state) => state.categories;
+const selectCategoriesReducer = state => state.categories;
 
 export const selectCategories = createSelector(
   [selectCategoriesReducer],
-  (categories) => categories.categories
+  categories => categories.categories
 );
