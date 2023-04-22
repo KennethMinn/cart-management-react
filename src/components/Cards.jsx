@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { excerpt } from "../utils/helper-func";
 import { useDispatch } from "react-redux";
-import { setCartItems } from "../store/products/product-action";
+import { setCartItems } from "../store/products/product-reducer";
 //*********** console.log([...Array(5)].map((_, i) => console.log(i+1)));  **************
 
 const Cards = ({ product, id }) => {

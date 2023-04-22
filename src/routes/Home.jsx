@@ -5,7 +5,7 @@ import { selectSearchField } from "../store/search/search-selector";
 import {
   setProducts,
   setFilteredProducts,
-} from "../store/products/product-action";
+} from "../store/products/product-reducer";
 import {
   selectProducts,
   selectFilteredProducts,

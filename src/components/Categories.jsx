@@ -1,5 +1,5 @@
 import React from "react";
-import { setFilteredProducts } from "../store/products/product-action";
+import { setFilteredProducts } from "../store/products/product-reducer";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProducts } from "../store/products/product-selector";
 import { selectCategories } from "../store/categories/category-selector";

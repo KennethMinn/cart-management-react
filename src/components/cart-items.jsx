@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { excerpt } from "../utils/helper-func";
 import { BsArrowLeftSquareFill, BsArrowRightSquareFill } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
-import { removeItemFromCart } from "../store/products/product-action";
+import { removeItemFromCart } from "../store/products/product-reducer";
 import { useDispatch } from "react-redux";
 
 const CartItems = ({ item, calcTotalIncrement, calcTotalDecrement }) => {
