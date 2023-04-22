@@ -1,5 +1,4 @@
 import { createSelector } from "reselect";
-import CartItems from "../../components/cart-items";
 
 export const selectProductsReducer = (state) => state.products;
 
