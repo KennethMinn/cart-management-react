@@ -37,8 +37,8 @@ export const productsSlice = createSlice({
       }
 
       state.cartItems = [
-        ...state.cartItems,
-        { ...action.payload, quantity: 1 },
+        ...state.cartItems, // [...[{state.cartItems}],{}] => [...{state.cartItems},{}]
+        { ...action.payload, quantity: 1 }, // {...{action.payload} , quantity :1} => {...action.payload , quantity : 1}
       ];
     },
     removeItemFromCart(state, action) {
