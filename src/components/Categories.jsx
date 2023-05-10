@@ -8,7 +8,7 @@ const Categories = () => {
   const products = useSelector(selectProducts);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('null');
   const renderCategories = e => {
     const catItems = products.filter(
       product => product.category === e.target.textContent
