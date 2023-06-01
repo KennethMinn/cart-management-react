@@ -58,6 +58,7 @@ export const {
   setFilteredProducts,
   setCartItems,
   removeItemFromCart,
+  setIsLoading,
 } = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

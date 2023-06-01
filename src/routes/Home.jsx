@@ -5,15 +5,20 @@ import { selectSearchField } from '../store/search/search-selector';
 import {
   setProducts,
   setFilteredProducts,
+  setIsLoading,
 } from '../store/products/product-reducer';
 import {
   selectProducts,
   selectFilteredProducts,
+  selectIsLoading,
 } from '../store/products/product-selector';
 import { setCategories } from '../store/categories/category-reducer';
+import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
 
 const Home = () => {
   const products = useSelector(selectProducts);
+
+  const isLoading = useSelector(selectIsLoading);
 
   const filteredProducts = useSelector(selectFilteredProducts);
 
@@ -33,14 +38,23 @@ const Home = () => {
   }, [searchField, products]);
 
   const getProducts = async () => {
+    dispatch(setIsLoading(true));
     const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
     dispatch(setProducts(data));
+    dispatch(setIsLoading(false));
     const uniqueCategories = [
       ...new Set(data.map(product => product.category)),
     ];
     dispatch(setCategories(uniqueCategories));
   };
+
+  if (isLoading)
+    return (
+      <div className=" flex justify-center items-center h-screen">
+        <ClimbingBoxLoader color={'#36d7b7'} loading={true} size={20} />
+      </div>
+    );
 
   return (
     <div className=" grid justify-items-center grid-cols-3 gap-44 gap-y-10 ">
